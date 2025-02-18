@@ -1,61 +1,29 @@
 package registropersona;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import java.util.List;
 
-public class Persona {
-    private final StringProperty nombre;
-    private final StringProperty direccion;
-    private final StringProperty telefono;
-    private final StringProperty vehiculo;
+class Persona {
+    private int id;
+    private String nombre;
+    private String direccion;
+    private String tipoVehiculo;
+    private List<String> telefonos;
 
-    public Persona(String nombre, String direccion, String telefono, String vehiculo) {
-        this.nombre = new SimpleStringProperty(nombre);
-        this.direccion = new SimpleStringProperty(direccion);
-        this.telefono = new SimpleStringProperty(telefono);
-        this.vehiculo = new SimpleStringProperty(vehiculo);
+    public Persona(int id, String nombre, String direccion, String tipoVehiculo, List<String> telefonos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.tipoVehiculo = tipoVehiculo;
+        this.telefonos = telefonos;
     }
 
-    public String getNombre() {
-        return nombre.get();
-    }
+    public int getId() { return id; }
+    public String getNombre() { return nombre; }
+    public String getDireccion() { return direccion; }
+    public String getTipoVehiculo() { return tipoVehiculo; }
 
-    public StringProperty nombreProperty() {
-        return nombre;
+    // Método para obtener los teléfonos como una cadena separada por comas
+    public String getTelefonos() {
+        return String.join(", ", telefonos);
     }
-
-    public String getDireccion() {
-        return direccion.get();
-    }
-
-    public StringProperty direccionProperty() {
-        return direccion;
-    }
-
-    public String getTelefono() {
-        return telefono.get();
-    }
-
-    public StringProperty telefonoProperty() {
-        return telefono;
-    }
-
-    public String getVehiculo() {
-        return vehiculo.get();
-    }
-
-    public StringProperty vehiculoProperty() {
-        return vehiculo;
-    }
-    
-    @Override
-    public String toString() {
-        return "Persona{" +
-               "nombre='" + nombre.get() + '\'' +
-               ", direccion='" + direccion.get() + '\'' +
-               ", telefono='" + telefono.get() + '\'' +
-               ", vehiculo='" + vehiculo.get() + '\'' +
-               '}';
-    }
-
- }
+}
